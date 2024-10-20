@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adrian <adrian@student.42.fr>              +#+  +:+       +#+         #
+#    By: aduenas- <aduenas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/02 15:41:18 by adrian            #+#    #+#              #
-#    Updated: 2024/10/06 20:00:14 by adrian           ###   ########.fr        #
+#    Updated: 2024/10/20 17:55:50 by aduenas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,20 +17,13 @@ SOURCES	= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJS	= ${SOURCES:.cpp=.o}
 
 all: $(NAME)
-
-
 $(NAME): $(OBJS)
 	$(CPP) $(CFLAGS) $(OBJS) -o $(NAME)
-
 %.o: %.cpp
 	$(CPP) $(CFLAGS) -c $< -o $@
-
 clean:
 	rm -rf $(OBJS)
-
 fclean: clean
 	rm -rf $(NAME)
-
 re: fclean all
-
 .PHONY: all clean fclean re

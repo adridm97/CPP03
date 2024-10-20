@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aduenas- <aduenas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:50:38 by adrian            #+#    #+#             */
-/*   Updated: 2024/10/06 19:57:44 by adrian           ###   ########.fr       */
+/*   Updated: 2024/10/20 18:17:06 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,23 @@ FragTrap::FragTrap(const std::string &name) :  ClapTrap(name)
 	_attackDamage = 30;
 	std::cout << "FragTrap " << _name << " constructed." << std::endl;
 };
+FragTrap::FragTrap(const FragTrap &other)
+{
+    *this = other;
+    std::cout << "FragTrap " << _name << " copied" << std::endl;
+}
+FragTrap& FragTrap::operator=(const FragTrap &other)
+{
+    std::cout << "FragTrap " << _name << " operator assignment called" << std::endl;
+    if (this != &other)
+    {
+        _name = other._name;
+        _hitPoints = other._hitPoints;
+        _energyPoints = other._energyPoints;
+        _attackDamage = other._attackDamage;
+    }
+    return *this;
+}
 FragTrap::~FragTrap()
 {
     std::cout << "FragTrap " << _name << " destroyed." << std::endl;

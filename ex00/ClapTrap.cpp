@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aduenas- <aduenas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 18:59:44 by adrian            #+#    #+#             */
-/*   Updated: 2024/10/02 15:39:35 by adrian           ###   ########.fr       */
+/*   Updated: 2024/10/20 17:16:35 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoint
 {
     std::cout << "ClapTrap " << _name << " created" << std::endl;
 }
-ClapTrap::ClapTrap(const ClapTrap &other) {
+ClapTrap::ClapTrap(const ClapTrap &other)
+{
     *this = other;
     std::cout << "ClapTrap " << _name << " copied" << std::endl;
 }
-ClapTrap& ClapTrap::operator=(const ClapTrap &other) {
-    if (this != &other) {
+ClapTrap& ClapTrap::operator=(const ClapTrap &other)
+{
+    if (this != &other)
+    {
         _name = other._name;
         _hitPoints = other._hitPoints;
         _energyPoints = other._energyPoints;
@@ -50,16 +53,18 @@ void ClapTrap::attack(const std::string &target)
 void ClapTrap::takeDamage(unsigned int amount) 
 {
     _hitPoints -= amount;
-    if (_hitPoints < 0) _hitPoints = 0;
+    if (_hitPoints < 0)
+        _hitPoints = 0;
     std::cout << "ClapTrap " << _name << " recieves " << amount << " points of damage, now have " << _hitPoints << " health points!" << std::endl;
 }
 void ClapTrap::beRepaired(unsigned int amount) 
 {
-    if (_hitPoints > 0 && _energyPoints > 0) {
+    if (_hitPoints > 0 && _energyPoints > 0)
+    {
         _energyPoints--;
         _hitPoints += amount;
         std::cout << "ClapTrap " << _name << " is repared " << amount << " health points, now have " << _hitPoints << " health points!" << std::endl;
-    } else {
-        std::cout << "ClapTrap " << _name << " doesn't have any health to be repaired!" << std::endl;
     }
+    else
+        std::cout << "ClapTrap " << _name << " doesn't have any health to be repaired!" << std::endl;
 }
